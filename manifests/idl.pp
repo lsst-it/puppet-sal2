@@ -34,13 +34,13 @@ class sal2::idl (
   }
   file { "${sal_install_path}/setup_salidl.env" :
     ensure  => file,
-    content => epp( 'sal2/setup_salidl.epp', $template_params ),
+    content => epp( 'sal2/setup_salidl.env.epp', $template_params ),
   }
 
   # Copy idl files from the rpm_idl_dir to the idl_dir
   $src = "${rpm_idl_dir}/sal_revCoded_*.idl"
   $tgt = "${install_dir}/idl"
-  exec{ 'sal2::idl::update_files' :
+  exec { 'sal2::idl::update_files' :
     command     => "/bin/cp -pv ${src} ${tgt}",
     onlyif      => [ "test -d ${install_dir}", "test -d ${rpm_idl_dir}" ],
     refreshonly => true,

@@ -4,8 +4,6 @@ sal2::exec_path:
   - "/opt/miniconda/bin"
   - "/bin"
 
-sal2::dds::ospl_version: "6.9.0"
-
 sal2::idl::git_repo_url: "https://github.com/lsst-ts/ts_idl"
 sal2::idl::rpm_dir: "/opt/lsst/ts_sal/idl"
 sal2::idl::version: "1.2.0"

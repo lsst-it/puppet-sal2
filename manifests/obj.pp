@@ -38,7 +38,7 @@ class sal2::obj (
   }
   file { "${sal_install_path}/setup_salobj.env" :
     ensure  => file,
-    content => epp( 'sal2/setup_salobj.epp', $template_params ),
+    content => epp( 'sal2/setup_salobj.env.epp', $template_params ),
   }
 
 }

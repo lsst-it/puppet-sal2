@@ -1,0 +1,37 @@
+<%- | String $ospl_package_name,
+      String $sal_env_file
+| -%>
+#!/bin/bash
+
+OSPL_PACKAGE_NAME="<%= $ospl_package_name -%>"
+SAL_ENV_FILE="<%= $sal_env_file -%>"
+
+
+function mk_sal_env() {
+  echo "export OSPL_HOME=\"$ospl_home\""  >$SAL_ENV_FILE
+  echo 'source "${OSPL_HOME}/release.com"' >>$SAL_ENV_FILE
+}
+
+
+function install_dds() {
+  pushd "$ospl_home/tools/python/src"
+  source "$SAL_ENV_FILE"
+  pip install -e .
+  popd
+}
+
+
+# Compare installed version of dds to the version available from current OSPL
+ospl_version=$( yum info "$OSPL_PACKAGE_NAME" | awk '/^Version/{print $NF}' )
+ospl_home="/opt/${OSPL_PACKAGE_NAME}/V${ospl_version}/HDE/x86_64.linux"
+
+dds_ver_expected=$(grep '^PACKAGE_VERSION=' "${ospl_home}/etc/RELEASEINFO" | cut -d= -f2)
+
+dds_ver_current=$(pip list installed | awk '$1=="dds"{print $NF}')
+
+[[ "$dds_ver_current" == "$dds_ver_expected" ]] && exit 0
+
+mk_sal_env
+
+install_dds
+

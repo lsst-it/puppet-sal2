@@ -6,15 +6,10 @@
 #   include sal2::rpm
 class sal2::rpm {
   Array  $packages,
-  Array  $required_os_pkgs,   #TODO - ARE THESE REALLY NEEDED?
   String $ts_sal_version,
   String $ts_xml_version,
   Hash   $yum_repos,
 ) {
-
-  #TODO - ARE THESE REALLY NEEDED?
-  # Dependent packages
-  ensure_packages( $required_os_pkgs )
 
   # Ensure yum repos are installed
   $yumrepo_defaults = {
@@ -35,6 +30,7 @@ class sal2::rpm {
   $rpm_version = "${ts_sal_version}-${ts_xml_version}.el7"
   $defaults = {
     ensure => $rpm_version,
+    notify => Exec['sal2::dds setup'],
   }
   ensure_packages( $packages, $defaults )
 
