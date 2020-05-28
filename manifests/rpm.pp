@@ -4,7 +4,7 @@
 #
 # @example
 #   include sal2::rpm
-class sal2::rpm {
+class sal2::rpm (
   Array  $packages,
   String $ts_sal_version,
   String $ts_xml_version,
@@ -20,10 +20,11 @@ class sal2::rpm {
     yumrepo{
       $name:
         * => $data,
-      ; 
+      ;
       default:
         * => $yumrepo_defaults,
       ;
+    }
   }
 
   # Install TS packages

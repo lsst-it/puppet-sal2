@@ -30,9 +30,9 @@ sal2::rpm::packages:
 sal2::rpm::ts_sal_version: "4.1.1"
 sal2::rpm::ts_xml_version: "5.1.0"
 sal2::rpm::yum_repos:
-    lsst-ts:
-        baseurl: "https://repo-nexus.lsst.org/nexus/repository/ts_yum/releases"
-        descr: "LSST Telescope and Site packages - $basearch"
-    lsst-ts-test:
-        baseurl: "https://repo-nexus.lsst.org/nexus/repository/ts_yum/test"
-        descr: "LSST Telescope and Site - $basearch - Source"
+  lsst-ts:
+    baseurl: "https://repo-nexus.lsst.org/nexus/repository/ts_yum/releases"
+    descr: "LSST Telescope and Site packages - $basearch"
+  lsst-ts-test:
+    baseurl: "https://repo-nexus.lsst.org/nexus/repository/ts_yum/test"
+    descr: "LSST Telescope and Site - $basearch - Source"
