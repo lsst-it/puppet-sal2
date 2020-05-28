@@ -24,6 +24,12 @@ class sal2::obj (
   }
 
   # Install the salobj
+  # If notify doesn't work, might need an alternative, such as:
+  # - compare $version to $install_dir/python/lsst/ts/salobj/version.py
+  # - Compare git commit hash (git rev-parse HEAD) to pip freeze
+  #   ie: unless => /opt/miniconda3/bin/pip freeze | grep -F $(git --git-dir=/opt/lsst/ts_salobj/.git rev-parse HEAD)
+  #   (pip does not report a version string, just the commit hash)
+  #   (assume this is a result of installing with the -e flag)
   exec { 'sal2::obj pip install' :
     command     => "pip install -e ${install_dir}",
     path        => $exec_path,
