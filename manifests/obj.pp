@@ -20,15 +20,14 @@ class sal2::obj (
   git { $install_dir :
     branch => "v${version}",
     origin => $git_repo_url,
+    notify => Exec['sal2::obj pip install'],
   }
 
   # Install the salobj
-  # TODO - What does this create? How to prevent running for every agent run?
-  # "/opt/miniconda/bin/pip install -e $install_dir"
   exec { 'sal2::obj pip install' :
-    command => "pip install -e ${install_dir}",
-    path    => $exec_path,
-    creates => ,
+    command     => "pip install -e ${install_dir}",
+    path        => $exec_path,
+    refreshonly => true,
   }
 
   # config env file
