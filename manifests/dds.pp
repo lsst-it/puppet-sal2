@@ -10,6 +10,7 @@ class sal2::dds (
 
   # get params from parent class
   $install_path = lookup( 'sal2::install_path' )
+  $exec_path = lookup( 'sal2::exec_path' )
 
   # define useful variables
   $ospl_home = "/opt/OpenSpliceDDS/V${ospl_version}/HDE/x86_64.linux"
@@ -29,7 +30,8 @@ class sal2::dds (
   # TODO - NEEDS TO USE THE MINICONDA PYTHON
   # run python installer
   exec { 'sal2::dds setup.py install' :
-    command => "source ${sal_env_file} && /bin/python3 setup.py install",
+    command => "source ${sal_env_file} && python3 setup.py install",
+    path    => $exec_path,
     creates => ,
     cwd     => "${ospl_home}/tools/python/src",
     require => [ Class['python'], File[$sal_env_file], Class['sal2::rpm'] ],

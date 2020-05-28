@@ -1,5 +1,8 @@
 ---
 sal2::install_path: "/opt/lsst"
+sal2::exec_path:
+  - "/opt/miniconda/bin"
+  - "/bin"
 
 sal2::dds::ospl_version: "6.9.0"
 
