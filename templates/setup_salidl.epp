@@ -1,0 +1,6 @@
+<%- | String $sal_install_path,
+      String $idl_install_path,
+| -%>
+source "<%= $sal_install_path -%>/setup_SAL.env"
+export TS_IDL_DIR="<%= $idl_install_path -%>"
+export PYTHONPATH="<%= $idl_install_path -%>/python:${PYTHONPATH}"

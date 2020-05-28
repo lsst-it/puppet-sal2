@@ -1,0 +1,7 @@
+---
+sal2::rpm::required_pkgs:
+  - git
+  - gcc-c++
+  - make
+  - patch
+  - wget

@@ -1,0 +1,4 @@
+<%- | String $ospl_home
+| -%>
+export OSPL_HOME="<%= $ospl_home -%>"
+source "${OSPL_HOME}/release.com"

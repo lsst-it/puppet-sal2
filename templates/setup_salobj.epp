@@ -1,0 +1,6 @@
+<%- | String $sal_install_path,
+      String $obj_install_path,
+| -%>
+source "<%= $sal_install_path -%>/setup_salidl.env"
+export TS_SALOBJ_DIR="<%= $obj_install_path -%>"
+export PYTHONPATH="<%= $obj_install_path -%>/python:${PYTHONPATH}"
