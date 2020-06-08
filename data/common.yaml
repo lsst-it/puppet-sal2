@@ -1,38 +1,5 @@
 ---
-sal2::install_path: "/opt/lsst"
-sal2::exec_path:
-  - "/opt/miniconda/bin"
-  - "/bin"
-
-sal2::idl::git_repo_url: "https://github.com/lsst-ts/ts_idl"
-sal2::idl::rpm_dir: "/opt/lsst/ts_sal/idl"
-sal2::idl::version: "1.2.0"
-
-sal2::obl::git_repo_url: "https://github.com/lsst-ts/ts_salobj"
-sal2::obj::version: "5.10.0"
-
-sal2::rpm::packages:
-  - ATHeaderService
-  - ATAOS
-  - ATCamera
-  - ATArchiver
-  - ATPtg
-  - MTPtg
-  - ATMCS
-  - ATSpectrograph
-  - Hexapod
-  - ATHexapod
-  - ATDome
-  - DIMM
-  - CCArchiver
-  - CCCamera
-  - CCHeaderService
-sal2::rpm::ts_sal_version: "4.1.1"
-sal2::rpm::ts_xml_version: "5.1.0"
-sal2::rpm::yum_repos:
-  lsst-ts:
-    baseurl: "https://repo-nexus.lsst.org/nexus/repository/ts_yum/releases"
-    descr: "LSST Telescope and Site packages - $basearch"
-  lsst-ts-test:
-    baseurl: "https://repo-nexus.lsst.org/nexus/repository/ts_yum/test"
-    descr: "LSST Telescope and Site - $basearch - Source"
+sal2::install_dir: "/opt/lsst"
+sal2::ospl_yumrepo_data:
+  baseurl: "https://repo-nexus.lsst.org/nexus/repository/ts_yum/releases"
+  descr: "LSST Telescope and Site packages - $basearch"
