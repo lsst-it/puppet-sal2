@@ -1,5 +1,17 @@
 ---
 sal2::install_dir: "/opt/lsst"
+
 sal2::ospl_yumrepo_data:
   baseurl: "https://repo-nexus.lsst.org/nexus/repository/ts_yum/releases"
   descr: "LSST Telescope and Site packages - $basearch"
+
+sal2::firewall::multicast_cidr: "127.0.0.1/32"
+sal2::firewall::omgdds_ports:
+  - "7400-32399"
+  - "32768-65535"
+sal2::firewall::omgdds_subnets:
+  - "127.0.0.1/32"
+sal2::firewall::opensplice_ports:
+  - "250-251"
+sal2::firewall::opensplice_subnets:
+  - "127.0.0.1/32"

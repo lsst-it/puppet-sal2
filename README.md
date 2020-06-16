@@ -7,6 +7,12 @@ Install SAL components
  
 ## Reference
 
+### class sal2::firewall (
+-  String[9]          $multicast_cidr,
+-  Array[String[1],1] $omgdds_ports,
+-  Array[String[1],1] $omgdds_subnets,
+-  Array[String[1],1] $opensplice_ports,
+-  Array[String[1],1] $opensplice_subnets,
 ### class sal2 (
 -  String $install_dir,
 -  String $ospl_version,
