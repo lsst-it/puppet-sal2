@@ -64,8 +64,19 @@ class sal2 (
       failovermethod => 'priority',
     ;
   }
+  # T&S rpm's don't allow upgrade in place, manually uninstall first
+  exec { 'uninstall OpenSpliceDDS' :
+    onlyif  => 'yum list installed | grep OpenSpliceDDS',
+    unless  => "yum list installed | grep OpenSpliceDDS | grep '${ospl_rpm_version}'",
+    path    => '/bin/:/sbin/:/usr/bin/:/usr/sbin/',
+    cwd     => '/',
+    command => "yum list installed | grep OpenSpliceDDS | cut -d' ' -f1 | xargs -- yum -y remove",
+  }
   $ospl_pkg_list = [ "OpenSpliceDDS-${ospl_rpm_version}" ]
-  $ospl_pkg_defaults = { 'ensure' =>  'present' }
+  $ospl_pkg_defaults = {
+    'ensure'  => 'present',
+    'require' => Exec['uninstall OpenSpliceDDS'],
+  }
   ensure_packages( $ospl_pkg_list, $ospl_pkg_defaults )
 
 
