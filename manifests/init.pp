@@ -35,6 +35,7 @@
 class sal2 (
   String $install_dir,
   String $ospl_version,
+  String $ospl_rpm_version,
   Hash   $ospl_yumrepo_data,
   Array  $required_os_pkgs,
   String $ts_idl_version,
@@ -63,7 +64,7 @@ class sal2 (
       failovermethod => 'priority',
     ;
   }
-  $ospl_pkg_list = [ "OpenSpliceDDS-${ospl_version}" ]
+  $ospl_pkg_list = [ "OpenSpliceDDS-${ospl_rpm_version}" ]
   $ospl_pkg_defaults = { 'ensure' =>  'present' }
   ensure_packages( $ospl_pkg_list, $ospl_pkg_defaults )
 
