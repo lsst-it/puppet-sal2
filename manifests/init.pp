@@ -39,6 +39,7 @@ class sal2 (
   Array  $required_os_pkgs,
   String $ts_idl_version,
   String $ts_salobj_version,
+  String $ts_dds_version,
 ) {
 
   file { $install_dir :
@@ -86,7 +87,7 @@ class sal2 (
 
   # Ensure T&S conda packages
   $ts_packages = [
-    "ts-dds==v${ospl_version}",
+    "ts-dds==v${ts_dds_version}",
     "ts-idl=${ts_idl_version}",
     "ts-salobj=${ts_salobj_version}",
   ]
