@@ -99,7 +99,7 @@ class sal2 (
 
   # Ensure T&S conda packages
   $ts_packages = [
-    "ts-dds==v${ts_dds_version}",
+    "ts-dds==${ts_dds_version}",
     "ts-idl=${ts_idl_version}",
     "ts-salobj=${ts_salobj_version}",
   ]
