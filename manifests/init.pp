@@ -105,4 +105,4 @@ class sal2 (
 #  ]
 #  miniconda::package { $ts_packages : }
 #
-#}
+}
