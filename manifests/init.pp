@@ -96,13 +96,13 @@ class sal2 (
       owner  => 'root',
   }
 
-# Removing miniconda for now
-#  # Ensure T&S conda packages
-#  $ts_packages = [
-#    "ts-dds==${ts_dds_version}",
-#    "ts-idl=${ts_idl_version}",
-#    "ts-salobj=${ts_salobj_version}",
-#  ]
-#  miniconda::package { $ts_packages : }
-#
+
+  # Ensure T&S conda packages
+  $ts_packages = [
+    "ts-dds==${ts_dds_version}",
+    "ts-idl=${ts_idl_version}",
+    "ts-salobj=${ts_salobj_version}",
+  ]
+  miniconda::package { $ts_packages : }
+
 }
